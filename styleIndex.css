@@ -1,0 +1,43 @@
+.grid-page-principale {
+  background-color: yellow;
+  grid-row: 2/3;
+  grid-column: 2/3;
+  display: grid;
+  grid-template-columns: 40px 8fr 40px 8fr 40px 8fr 40px;
+  grid-template-rows: 40px 500px 40px 1fr 40px;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.carousel {
+  grid-row: 2/3;
+  grid-column: 2/7;
+  background-color: brown;
+}
+
+.carousel-inner img {
+  height: 49vh;
+  border: solid;
+  border-width: 5px;
+}
+
+.trending {
+  grid-row: 4/5;
+  grid-column: 2/7;
+  background-color: yellow;
+  display: flex;
+  justify-content: space-between;
+}
+
+.trending-item {
+  border: 1px solid;
+  background-color: brown;
+  width: 33%;
+  height: 200px;
+}
+
+.trending1,.trending2,.trending3 {
+  max-width: 100%;
+  max-height: 100%;
+}
+
