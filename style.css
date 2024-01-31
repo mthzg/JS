@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Work+Sans:wght@300&display=swap');
+
 html {
-  background-color: rgb(221, 221, 221);
+  background-color : rgb(221, 221, 221);
+  font-family: 'Merriweather', serif;
+  background-color: rgb(204, 204, 39);
 }
 .grid-general {
   margin: 0px;
@@ -21,6 +25,7 @@ header {
   grid-template-rows: 10px 30px 30px 35px 10px;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
+  box-shadow: 1px 1px 20px rgba(63, 63, 63, 0.301);
 }
 
 img[src="logo.png"] {
@@ -42,6 +47,7 @@ img[src="profile.png"] {
   grid-row: 2/3;
   grid-column: 4/5;
   text-align: center;
+  font-family: 'Work Sans', sans-serif;
 }
 
 input[type="search"] {
@@ -51,3 +57,6 @@ input[type="search"] {
   text-align: center;
 }
 
+h1,h2 {
+  font-family: 'Work Sans', sans-serif;
+}
