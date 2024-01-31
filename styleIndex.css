@@ -28,13 +28,20 @@
   grid-row: 4/5;
   grid-column: 2/7;
   background-color: yellow;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-column-gap: 30px;
+  grid-row-gap: 30px;
+  
+  
 }
+
 
 .trending-item {
   background-color: brown;
-  width: 33%;
+  border: solid;
+  width: 100%;
   height: 200px;
   background-size: 100%;
   box-shadow: 1px 1px 20px rgba(54, 54, 54, 0.384) inset;
