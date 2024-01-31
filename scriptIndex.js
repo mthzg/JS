@@ -29,7 +29,7 @@ const options = {
     Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkYjhhOTgxMGFlYjRlMmM1ZWZjNGEzZmQyMTc0NDRiYyIsInN1YiI6IjY1Yjc1YmJlZDU1YzNkMDE3Y2ZhYzBiZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.0XfH-ZZ0XcDH-KXR7ZINt7KhzuICXcbvlnaNrzc0aEM'
   }
 };
-for (let i = 0; i < 15; i++) {
+for (let i = 0; i < 18; i++) {
 divTrending = document.querySelector('.trending')
 test = `<div class="trending-item trending`+(i+1)+`"><h2></h2></div>`
 divTrending.innerHTML = divTrending.innerHTML + test
@@ -45,7 +45,15 @@ fetch(
     for (let i = 0; i < 3; i++) {
       fetchmovie(".image-carousel"+(i+1),".carousel-titre"+(i+1),data.results[i].id);
     }
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < 18; i++) {
       fetchMovieBackground(".trending"+(i+1),".trending"+(i+1)+" h2",data.results[i].id);
     }
   });
+
+
+
+
+
+  //window.onscroll = function() {
+//  if window.innerHeight > window.innerWidth
+//}

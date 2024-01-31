@@ -26,6 +26,7 @@ header {
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   box-shadow: 1px 1px 20px rgba(63, 63, 63, 0.301);
+  z-index: 1;
 }
 
 img[src="logo.png"] {
