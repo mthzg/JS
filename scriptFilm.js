@@ -21,9 +21,7 @@ fetch(lienApi)
     synopsis.innerHTML = data.overview
     
     rating = document.querySelector('.rating h3')
-    let voteInt = data.vote_average.toString();
-//    voteInt = voteInt.substring(3,4)
+    let voteInt = (Math.round(data.vote_average*10))/10;
     rating.innerHTML = voteInt+" / 10"
 })
 .catch(error => console.error('Error:', error));
-
