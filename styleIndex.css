@@ -24,26 +24,21 @@
   grid-row: 4/5;
   grid-column: 2/7;
   background-color: yellow;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-  grid-column-gap: 30px;
-  grid-row-gap: 30px;
-  
-  
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 
 .trending-item {
-  background-color: brown;
-  border: solid;
-  width: 100%;
+  width: 33%;
   height: 200px;
   background-size: 100%;
   box-shadow: 1px 1px 20px rgba(54, 54, 54, 0.384) inset;
   display: flex;
   flex-direction: column;
   justify-content: end;
+  margin-bottom: 7px;
 }
 
 .trending-item h2 {
