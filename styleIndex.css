@@ -29,14 +29,21 @@
 }
 
 .trending-item {
-  border: 1px solid;
   background-color: brown;
   width: 33%;
   height: 200px;
+  background-size: 100%;
+  box-shadow: 1px 1px 20px rgba(54, 54, 54, 0.384) inset;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
 }
 
-.trending1,.trending2,.trending3 {
-  max-width: 100%;
-  max-height: 100%;
+.trending-item h2 {
+  color:white;
+  font-size: 30px;
+  padding-left: 20px;
+  text-shadow: 2px 2px 4px rgb(66, 66, 66);
+  font-family: 'Work Sans', sans-serif;
+  text-align: center;
 }
-
