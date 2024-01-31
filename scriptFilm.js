@@ -1,4 +1,5 @@
 idFilm = Math.random()*200
+//idFilm = 201
 lienApi = "https://api.themoviedb.org/3/movie/"+idFilm+"?api_key=db8a9810aeb4e2c5efc4a3fd217444bc"
 
 fetch(lienApi)
@@ -13,13 +14,16 @@ fetch(lienApi)
     titrePoster = document.querySelector('.poster h2')
     titrePoster.innerHTML = data.title
 
-    imagePoster = document.querySelector('.poster img');
-    imagePoster.setAttribute('src',"https://image.tmdb.org/t/p/original/"+data.backdrop_path);
+    imagePoster = document.querySelector('.poster');
+    imagePoster.style.backgroundImage = "url(https://image.tmdb.org/t/p/original/"+data.backdrop_path+")";
 
     synopsis = document.querySelector('.synopsis p');
     synopsis.innerHTML = data.overview
     
     rating = document.querySelector('.rating h3')
-    rating.innerHTML = data.vote_average+"/10"    
+    let voteInt = data.vote_average.toString();
+//    voteInt = voteInt.substring(3,4)
+    rating.innerHTML = voteInt+" / 10"
 })
 .catch(error => console.error('Error:', error));
+

@@ -1,21 +1,30 @@
 .grid-page-film {
-    background-color:yellow;
     grid-row:2/3;
     grid-column: 2/3;
     display: grid;
     grid-template-columns: 40px 12fr 40px 6fr 40px;
-    grid-template-rows: 40px 400px 40px 250px 40px 1fr 40px;
+    grid-template-rows: 40px 400px 40px 0fr 40px 1fr 40px;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
+    box-shadow: 1px 1px 20px rgba(75, 75, 75, 0.212);
+    background-color: rgb(245, 243, 243);
 }
 
 .poster {
     grid-row:2/3;
     grid-column:2/5;
-    background-color: brown;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 9fr 1fr;
+    background-size: 100%;
+    transition-duration: 300ms;
+    background-position: 50% 50%;
+    box-shadow: 1px 1px 50px rgba(54, 54, 54, 0.527) inset;
+}
+
+.poster:hover {
+    background-size: 110%;
+    padding-bottom: 20px;
 }
 
 .poster img {
@@ -29,31 +38,41 @@
     grid-row: 2/3;
     grid-column: 1/3;
     color:white;
+    font-size: 42px;
+    padding-left: 50px;
     text-shadow: 2px 2px 4px grey;
+    font-family: 'Work Sans', sans-serif;
+    transition-duration: 300ms;
 }
 
 .synopsis {
     grid-row: 4/5;
     grid-column: 2/3;
-    background-color: brown;
     font-size: 22px;
     text-align: center;
+    padding: 10px;
+    line-height: 40px;
+}
+
+.synopsis h2 {
+    font-size: 30px;
+    padding-bottom: 15px;
 }
 
 .rating {
     grid-row: 4/5;
     grid-column: 4/5;
-    background-color: brown;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 40px;
+    border-left: 1px solid yellow;
 }
 
 .commentaires {
     grid-row: 6/7;
     grid-column: 2/5;
-    background-color: brown;
+    border: 1px solid;
     display: grid;
     grid-template-columns: 50px 200px 50px 900px 50px;
     grid-template-rows: 50px 200px 50px 250px 50px;
