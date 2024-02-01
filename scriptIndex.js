@@ -1,3 +1,4 @@
+let listeFilm = [];
 
 function changeMovie (optionsimage,lienImage,optionstitre,titre) {
   let imagElement = document.querySelector(optionsimage);
@@ -16,8 +17,8 @@ function changeMovieBackground (optionsimage,lienImage,optionstitre, titre) {
 
 for (let i = 0; i < 18; i++) {
   divTrending = document.querySelector('.trending')
-  test = `<div class="trending-item trending`+(i+1)+`"><h2></h2></div>`
-  divTrending.innerHTML = divTrending.innerHTML + test
+  HTMLToAdd = `<div class="trending-item trending`+(i+1)+`"><h2></h2></div>`
+  divTrending.innerHTML = divTrending.innerHTML + HTMLToAdd
 }
 
 const options = {
@@ -45,13 +46,39 @@ fetch(
       else {
         titre = data.results[i].title
       }
+      
+      listeFilm.push(data.results[i].id);
       changeMovieBackground(".trending"+(i+1),data.results[i].backdrop_path,".trending"+(i+1)+" h2",titre);
     }
   });
-  
-  
-  
-  
+let elements = [];
+
+  for (let i=0; i<18;i++){
+  elements.push(document.querySelector('.trending'+(i+1)))
+  elements[i].addEventListener('click', function (event) {
+    const expireDate = new Date()
+    expireDate.setTime(expireDate.getTime() + 30000)
+    let className = elements[i].classList[1]
+    className = className.substring(8);
+    document.cookie = "idFilm="+listeFilm[className-1]+";expires="+expireDate.toUTCString()+";";
+    window.location.href="film.html";
+  });}
+
+
+
+
+
+  /*
+  element2 = document.querySelector('.trending1')
+  element2.addEventListener('click', function (event) {
+    let className = element2.classList[1]
+    className = className.substring(8);
+    //document.cookie = listeFilm[className-1];
+    console.log(listeFilm[className-1], className)
+  });
+*/
+
+
   
   //window.onscroll = function() {
     //  if window.innerHeight > window.innerWidth
