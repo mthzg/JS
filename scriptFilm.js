@@ -27,3 +27,36 @@ fetch(lienApi)
     rating.innerHTML = voteInt+" / 10"
 })
 .catch(error => console.error('Error:', error));
+
+x = 0
+const options = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhOWI1MzgyMmUwNzlhMjA3OWEyNTU3YmY4YzE2YjFhOCIsInN1YiI6IjY1YjRmN2U3NThlZmQzMDE2M2NhM2E1ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.8jpbHJlS1LVUQ7D2ulav92LOTi88tzJGZZ7RlcwrA9c'
+    }
+  };
+  fetch('https://api.themoviedb.org/3/movie/866398/reviews?language=en-US&page=1', options)
+  .then(response => response.json())
+  .then((data) => {
+    console.log(data)
+    console.log(data.results[x].author_details.username)
+    console.log(data.results[x].author_details.avatar_path)
+    console.log(data.results[x].created_at)
+    console.log(data.results[x].content)
+  })
+
+for (let i = 0; i < 6 || i == undefined; i++) {
+    divComm = document.querySelector('.zone-commentaires')
+    HTMLToAdd = `<div class="commentaire com`+(i+1)+`">
+    <img class="pp`+(i+1)+`" src="" alt="profile-picture">
+    <h3  class="user"`+(i+1)+`></h3>
+    <p class="texte"`+(i+1)+`></p>
+    </div>`
+    divComm.innerHTML = divComm.innerHTML + HTMLToAdd
+    pp = document.querySelector('.pp'+[i])
+    user = document.querySelector('.user'+[i])
+    com = document.querySelector('.texte'+[i])
+    com.innerHTML = data.results[i].content
+  }
+  
