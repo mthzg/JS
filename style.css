@@ -51,13 +51,6 @@ img[src="profile.png"] {
   font-family: 'Work Sans', sans-serif;
 }
 
-input[type="search"] {
-  background-color: aqua;
-  grid-row: 4/5;
-  grid-column: 4/5;
-  text-align: center;
-}
-
 h1,h2 {
   font-family: 'Work Sans', sans-serif;
 }
