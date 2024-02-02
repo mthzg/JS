@@ -28,7 +28,28 @@ function recupToken(){
         fetch('http://api.themoviedb.org/3/authentication/session/new', options2)
         .then(respons => respons.json())
         .then((data) => {
-          console.log(data)})
+          console.log(data)
+          let id = data.session_id
+          console.log(id)
+          if (data.success === true) {
+            console.log(data.success,"test if")
+            console.log(id,"test if")
+            const options3 = {
+              method: 'GET',
+              headers: {
+                accept: 'application/json',
+                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhOWI1MzgyMmUwNzlhMjA3OWEyNTU3YmY4YzE2YjFhOCIsInN1YiI6IjY1YjRmN2U3NThlZmQzMDE2M2NhM2E1ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.8jpbHJlS1LVUQ7D2ulav92LOTi88tzJGZZ7RlcwrA9c'
+              }
+            };
+            fetch('https://api.themoviedb.org/3/account/'+id, options3)
+            .then(response => response.json())
+            .then((data) => {
+              console.log(data)
+              let username = data.username
+              console.log(username)
+            })
+          }
+        })
       }
     }, 5000);
   })
@@ -37,3 +58,5 @@ function recupToken(){
 login = document.querySelector('.login').addEventListener('click', function (e) {
   recupToken();
 });
+
+
