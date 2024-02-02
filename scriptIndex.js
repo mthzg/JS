@@ -1,23 +1,25 @@
 let listeFilm = [];
 
-function changeMovie (optionsimage,lienImage,optionstitre,titre) {
-  let imagElement = document.querySelector(optionsimage);
-  imagElement.setAttribute("src", "https://image.tmdb.org/t/p/original/"+lienImage);
-  let titrElement = document.querySelector(optionstitre);
-  titrElement.textContent = titre;
+function changeCarouselMovieImage (optionsimage,lienImage,optionstitre,titre) {
+  let imageElement = document.querySelector(optionsimage);
+  imageElement.setAttribute("src", "https://image.tmdb.org/t/p/original/"+lienImage);
+  let titreElement = document.querySelector(optionstitre);
+  titreElement.textContent = titre;
 }
-function changeMovieBackground (optionsimage,lienImage,optionstitre, titre) {
-  let imagElement = document.querySelector(optionsimage);
-  imagElement.style.backgroundImage = "url(https://image.tmdb.org/t/p/original/"+lienImage+")";
-  let titrElement = document.querySelector(optionstitre);
-  titrElement.textContent = titre;
+function changeTrendingMovieBackground (optionsimage,lienImage,optionstitre,titre,optionsDate,date) {
+  let imageElement = document.querySelector(optionsimage);
+  imageElement.style.backgroundImage = "url(https://image.tmdb.org/t/p/original/"+lienImage+")";
+  let titreElement = document.querySelector(optionstitre);
+  titreElement.textContent = titre;
+  let dateElement = document.querySelector(optionsDate);
+  dateElement.textContent = date;
 }
 
 
 
 for (let i = 0; i < 18; i++) {
   divTrending = document.querySelector('.trending')
-  HTMLToAdd = `<div class="trending-item trending`+(i+1)+`"><h2></h2></div>`
+  HTMLToAdd = `<div class="trending-item trending`+(i+1)+`"><h2></h2><p></p></div>`
   divTrending.innerHTML = divTrending.innerHTML + HTMLToAdd
 }
 
@@ -37,7 +39,13 @@ fetch(
   .then((data) => {
     console.log(data)
     for (let i = 0; i < 3; i++) {
-      changeMovie(".image-carousel"+(i+1),data.results[i].backdrop_path,".carousel-titre"+(i+1),data.results[i].title);
+      if (data.results[i].title === undefined){
+        titre = data.results[i].name
+      }
+      else {
+        titre = data.results[i].title
+      }
+      changeCarouselMovieImage(".image-carousel"+(i+1),data.results[i].backdrop_path,".carousel-titre"+(i+1),titre);
     }
     for (let i = 0; i < 18; i++) {
       if (data.results[i].title === undefined){
@@ -46,9 +54,15 @@ fetch(
       else {
         titre = data.results[i].title
       }
+      if (data.results[i].release_date === undefined){
+        date = data.results[i].first_air_date
+      }
+      else {
+        date = data.results[i].release_date
+      }
       
       listeFilm.push(data.results[i].id);
-      changeMovieBackground(".trending"+(i+1),data.results[i].backdrop_path,".trending"+(i+1)+" h2",titre);
+      changeTrendingMovieBackground(".trending"+(i+1),data.results[i].backdrop_path,".trending"+(i+1)+" h2",titre,".trending"+(i+1)+" p",date);
     }
   });
 let elements = [];
@@ -95,10 +109,10 @@ let elements = [];
 //    fetch(lienApi)
 //    .then((response) => response.json())
 //    .then((data) => {
-//     let imagElement = document.querySelector(optionsimage);
-//      imagElement.setAttribute("src", "https://image.tmdb.org/t/p/original/"+data.backdrop_path);
-//     let titrElement = document.querySelector(optionstitre);
-//      titrElement.textContent = data.title;
+//     let imageElement = document.querySelector(optionsimage);
+//      imageElement.setAttribute("src", "https://image.tmdb.org/t/p/original/"+data.backdrop_path);
+//     let titreElement = document.querySelector(optionstitre);
+//      titreElement.textContent = data.title;
 //    })}
     
 //function fetchMovieBackground (optionsimage,optionstitre, idFilm) {
@@ -106,8 +120,8 @@ let elements = [];
 //  fetch(lienApi)
 //  .then((response) => response.json())
 //  .then((data) => {
-//    let imagElement = document.querySelector(optionsimage);
-//    imagElement.style.backgroundImage = "url(https://image.tmdb.org/t/p/original/"+data.backdrop_path+")";
-//    let titrElement = document.querySelector(optionstitre);
-//    titrElement.textContent = data.title;
+//    let imageElement = document.querySelector(optionsimage);
+//    imageElement.style.backgroundImage = "url(https://image.tmdb.org/t/p/original/"+data.backdrop_path+")";
+//    let titreElement = document.querySelector(optionstitre);
+//    titreElement.textContent = data.title;
 //  })}
