@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Work+Sans:wght@300&display=swap');
 
 html {
-  background-color : rgb(221, 221, 221);
   font-family: 'Merriweather', serif;
   background-color: rgb(204, 204, 39);
 }
@@ -11,6 +10,7 @@ html {
   grid-template-columns: 1fr 5fr 1fr;
   grid-template-rows: 1fr;
   grid-column-gap: 0px;
+  background-color: rgb(204, 204, 39);
   grid-row-gap: 0px;
 }
 
@@ -19,38 +19,66 @@ header {
   position: sticky;
   top: 0;
   width: 100%;
-  background-color: yellowgreen;
+  background-color: yellow;
   display: grid;
-  grid-template-columns: 40px 1fr 30px 3fr 30px 95px 40px;
+  grid-template-columns: 40px 95px 30px 3fr 30px 95px 40px;
   grid-template-rows: 10px 30px 30px 35px 10px;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  box-shadow: 1px 1px 20px rgba(63, 63, 63, 0.301);
+  box-shadow: 1px 1px 20px rgba(43, 43, 43, 0.342);
   z-index: 1;
 }
 
 img[src="logo.png"] {
   grid-row: 2/5;
   grid-column: 2/3;
-  max-width: 100%;
   max-height: 100%;
 }
 
 img[src="profile.png"] {
-  background-color: aqua;
   grid-row: 2/5;
   grid-column: 6/7;
   border-radius: 100px;
 }
 
-.titre-header {
-  /*    background-color: aqua; */
+header h1 {
   grid-row: 2/3;
   grid-column: 4/5;
+  font-size: 90px;
   text-align: center;
   font-family: 'Work Sans', sans-serif;
 }
 
+header a {
+  text-decoration: none;
+  color: black;
+  background-color: white;
+  text-align: center;
+  border-radius: 10%/30%;
+  transition-duration: 200ms;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 14px;
+  box-shadow: 2px 2px 5px rgba(56, 56, 56, 0.432);
+  font-family: 'Merriweather', serif;
+}
+
+header a:hover {
+  background-color: black;
+  color: white;
+}
+
 h1,h2 {
   font-family: 'Work Sans', sans-serif;
+}
+
+a[href="recherche.html"] {
+  grid-row:2/3;
+  grid-column: 6/7;
+}
+
+a[href="auth.html"] {
+  grid-row: 4/5;
+  grid-column: 6/7;
 }

@@ -1,5 +1,5 @@
 .grid-page-principale {
-  background-color: yellow;
+  background-color: white;
   grid-row: 2/3;
   grid-column: 2/3;
   display: grid;
@@ -7,6 +7,7 @@
   grid-template-rows: 40px 700px 40px 1fr 40px;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
+  box-shadow: 1px 1px 20px rgba(43, 43, 43, 0.342);
 }
 
 .carousel{
@@ -23,7 +24,6 @@
 .trending {
   grid-row: 4/5;
   grid-column: 2/7;
-  background-color: yellow;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
