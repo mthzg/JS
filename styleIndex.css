@@ -39,10 +39,14 @@
   flex-direction: column;
   justify-content: end;
   margin-bottom: 7px;
+  transition-duration: 200ms;
+  background-position: 50% 50%;
 }
 
 .trending-item:hover{
   cursor: pointer;
+  background-size: 110%;
+  padding-bottom:10px;
 }
 
 .trending-item h2 {
