@@ -18,7 +18,7 @@
     grid-template-rows: 9fr 1fr;
     background-size: 100%;
     transition-duration: 300ms;
-    background-position: 50% 50%;
+    background-position: 50% 30%;
     box-shadow: 1px 1px 50px rgba(54, 54, 54, 0.527) inset;
 }
 
