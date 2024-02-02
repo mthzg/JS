@@ -12,7 +12,7 @@ function recupToken(){
     let token = data.request_token;
     console.log(token);
    const auth = window.open("https://www.themoviedb.org/authenticate/" + token + "?redirect_to=http://127.0.0.1:5500/auth.html");
-   setTimeout(() => {
+   timer = setInterval(() => {
      if (auth.closed === true || auth.closed === false) {
        console.log("closed")
        console.log(token,"test")
@@ -32,8 +32,7 @@ function recupToken(){
           let id = data.session_id
           console.log(id)
           if (data.success === true) {
-            console.log(data.success,"test if")
-            console.log(id,"test if")
+            clearInterval(timer)
             const options3 = {
               method: 'GET',
               headers: {
@@ -58,5 +57,3 @@ function recupToken(){
 login = document.querySelector('.login').addEventListener('click', function (e) {
   recupToken();
 });
-
-
