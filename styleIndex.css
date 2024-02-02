@@ -4,7 +4,7 @@
   grid-column: 2/3;
   display: grid;
   grid-template-columns: 40px 8fr 40px 8fr 40px 8fr 40px;
-  grid-template-rows: 40px 500px 40px 1fr 40px;
+  grid-template-rows: 40px 700px 40px 1fr 40px;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
 }
@@ -16,7 +16,7 @@
 }
 
 .carousel-inner img {
-  height: 55vh;
+  height: 700px;
   box-shadow: 1px 1px 20px rgba(54, 54, 54, 0.384) inset;
 }
 
