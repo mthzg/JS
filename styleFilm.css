@@ -78,7 +78,6 @@
 }
 
 .commentaire {
-    border: 1px solid;
     display: grid;
     grid-template-columns: 50px 100px 50px 900px 50px;
     grid-template-rows: 25px 100px 0px 150px 25px;
@@ -90,19 +89,22 @@
     border: solid;
     grid-row: 2/3;
     grid-column: 2/3;
-    border-radius: 100%
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
 }
 
 .commentaire h3 {
-    border: solid;
+    display: flex;
     grid-row: 2/3;
-    grid-column: 4/5;
+    grid-column: 3/5;
     font-size: 30px;
+    margin-left: 10px;
+    justify-content:space-between;
 }
 
 .commentaire p {
-    border: solid;
     grid-row: 4/6;
     grid-column: 2/5;
-    font-size: 20px;
+    font-size: 15px;
 }
