@@ -35,7 +35,7 @@ img[src="logo.png"] {
   max-height: 100%;
 }
 
-img[src="profile.png"] {
+img[alt="profile-picture"] {
   grid-row: 2/5;
   grid-column: 6/7;
   border-radius: 100px;
