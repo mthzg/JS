@@ -1,5 +1,3 @@
-let listeFilm = [];
-
 function changeCarouselMovieImage (optionsimage,lienImage,optionstitre,titre) {
   let imageElement = document.querySelector(optionsimage);
   imageElement.setAttribute("src", "https://image.tmdb.org/t/p/original/"+lienImage);
@@ -18,12 +16,12 @@ function changeTrendingMovieBackground (optionsimage,lienImage,optionstitre,titr
 }
 
 
-
-for (let i = 0; i < 18; i++) {
+function addDiv(startEndAddDiv) {
+for (let i = startEndAddDiv; i < startEndAddDiv+20; i++) {
   divTrending = document.querySelector('.trending')
   HTMLToAdd = `<a href="index.html" class="trending-item trending`+(i+1)+`"><h2></h2><p></p></a>`
   divTrending.innerHTML = divTrending.innerHTML + HTMLToAdd
-}
+}};
 
 const options = {
   method: 'GET',
@@ -32,14 +30,11 @@ const options = {
     Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkYjhhOTgxMGFlYjRlMmM1ZWZjNGEzZmQyMTc0NDRiYyIsInN1YiI6IjY1Yjc1YmJlZDU1YzNkMDE3Y2ZhYzBiZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.0XfH-ZZ0XcDH-KXR7ZINt7KhzuICXcbvlnaNrzc0aEM'
   }
 };
-
-
 fetch(
   "https://api.themoviedb.org/3/trending/all/day?language=en-US",options
   )
   .then((response) => response.json())
   .then((data) => {
-    console.log(data)
     for (let i = 0; i < 3; i++) {
       if (data.results[i].title === undefined){
         titre = data.results[i].name
@@ -48,26 +43,51 @@ fetch(
         titre = data.results[i].title
       }
       changeCarouselMovieImage(".image-carousel"+(i+1),data.results[i].backdrop_path,".carousel-titre"+(i+1),titre);
-    }
-    for (let i = 0; i < 18; i++) {
-      if (data.results[i].title === undefined){
-        titre = data.results[i].name
+    }});
+function getTrending(page,startEndGetTrending) {
+fetch(
+  "https://api.themoviedb.org/3/trending/all/day?language=en-US&page="+page,options
+  )
+  .then((response) => response.json())
+  .then((data) => {
+    console.log(data)
+    for (let i = startEndGetTrending; i < startEndGetTrending+20; i++) {
+      let titreActuel = i-startEndGetTrending
+      if (data.results[titreActuel].title === undefined){
+        titre = data.results[titreActuel].name
       }
       else {
-        titre = data.results[i].title
+        titre = data.results[titreActuel].title
       }
-      if (data.results[i].release_date === undefined){
-        date = data.results[i].first_air_date
+      if (data.results[titreActuel].release_date === undefined){
+        date = data.results[titreActuel].first_air_date
       }
       else {
-        date = data.results[i].release_date
+        date = data.results[titreActuel].release_date
       }
       
-      listeFilm.push(data.results[i].id);
-      changeTrendingMovieBackground(".trending"+(i+1),data.results[i].backdrop_path,".trending"+(i+1)+" h2",titre,".trending"+(i+1)+" p",date,".trending"+(i+1),data.results[i].id);
+      changeTrendingMovieBackground(".trending"+(i+1),data.results[titreActuel].backdrop_path,".trending"+(i+1)+" h2",titre,".trending"+(i+1)+" p",date,".trending"+(i+1),data.results[titreActuel].id);
     }
   });
+};
 
+
+let startEndVariable = 0;
+let pageTrending = 1;
+addDiv(startEndVariable);
+getTrending(pageTrending,startEndVariable);
+let mainDiv = document.querySelector(".grid-general");
+mainDiv.onscroll = (e) => {
+  let positionDuClient = document.documentElement.scrollTop+document.documentElement.clientHeight;
+  let positionMaxPage = document.documentElement.scrollHeight;
+  if (positionDuClient >= positionMaxPage) {
+    startEndVariable += 20;
+    pageTrending += 1;
+    addDiv(startEndVariable);
+    getTrending(pageTrending,startEndVariable);
+    
+  }
+}
 
 
   /*let elements = [];
