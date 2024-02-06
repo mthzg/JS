@@ -1,7 +1,10 @@
-idFilm = document.cookie
-console.log(idFilm);
-idFilm = idFilm.substring(7);
-console.log(idFilm);
+const parametresRecherche = new URLSearchParams(window.location.search);
+idFilm = parametresRecherche.get('id');
+
+//idFilm = document.cookie
+//console.log(idFilm);
+//idFilm = idFilm.substring(7);
+//console.log(idFilm);
 lienApi = "https://api.themoviedb.org/3/movie/"+idFilm+"?api_key=db8a9810aeb4e2c5efc4a3fd217444bc"
 
 fetch(lienApi)

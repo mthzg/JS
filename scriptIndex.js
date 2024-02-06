@@ -6,7 +6,9 @@ function changeCarouselMovieImage (optionsimage,lienImage,optionstitre,titre) {
   let titreElement = document.querySelector(optionstitre);
   titreElement.textContent = titre;
 }
-function changeTrendingMovieBackground (optionsimage,lienImage,optionstitre,titre,optionsDate,date) {
+function changeTrendingMovieBackground (optionsimage,lienImage,optionstitre,titre,optionsDate,date, optionsLien, lienId) {
+  let lienElement = document.querySelector(optionsLien);
+  lienElement.setAttribute("href", "film.html?id="+lienId)
   let imageElement = document.querySelector(optionsimage);
   imageElement.style.backgroundImage = "url(https://image.tmdb.org/t/p/original/"+lienImage+")";
   let titreElement = document.querySelector(optionstitre);
@@ -19,7 +21,7 @@ function changeTrendingMovieBackground (optionsimage,lienImage,optionstitre,titr
 
 for (let i = 0; i < 18; i++) {
   divTrending = document.querySelector('.trending')
-  HTMLToAdd = `<div class="trending-item trending`+(i+1)+`"><h2></h2><p></p></div>`
+  HTMLToAdd = `<a href="index.html" class="trending-item trending`+(i+1)+`"><h2></h2><p></p></a>`
   divTrending.innerHTML = divTrending.innerHTML + HTMLToAdd
 }
 
@@ -62,27 +64,26 @@ fetch(
       }
       
       listeFilm.push(data.results[i].id);
-      changeTrendingMovieBackground(".trending"+(i+1),data.results[i].backdrop_path,".trending"+(i+1)+" h2",titre,".trending"+(i+1)+" p",date);
+      changeTrendingMovieBackground(".trending"+(i+1),data.results[i].backdrop_path,".trending"+(i+1)+" h2",titre,".trending"+(i+1)+" p",date,".trending"+(i+1),data.results[i].id);
     }
   });
-let elements = [];
-
-  for (let i=0; i<18;i++){
-  elements.push(document.querySelector('.trending'+(i+1)))
-  elements[i].addEventListener('click', function (event) {
-    const expireDate = new Date()
-    expireDate.setTime(expireDate.getTime() + 30000)
-    let className = elements[i].classList[1]
-    className = className.substring(8);
-    document.cookie = "idFilm="+listeFilm[className-1]+";expires="+expireDate.toUTCString()+";";
-    window.location.href="film.html";
-  });}
 
 
 
+  /*let elements = [];
+  
+    for (let i=0; i<18;i++){
+    elements.push(document.querySelector('.trending'+(i+1)))
+    elements[i].addEventListener('click', function (event) {
+      const expireDate = new Date()
+      expireDate.setTime(expireDate.getTime() + 30000)
+      let className = elements[i].classList[1]
+      className = className.substring(8);
+      document.cookie = "idFilm="+listeFilm[className-1]+";expires="+expireDate.toUTCString()+";";
+      window.location.href="film.html";
+    });}
 
-
-  /*
+    
   element2 = document.querySelector('.trending1')
   element2.addEventListener('click', function (event) {
     let className = element2.classList[1]
@@ -90,9 +91,9 @@ let elements = [];
     //document.cookie = listeFilm[className-1];
     console.log(listeFilm[className-1], className)
   });
-*/
-
-
+  */
+ 
+ 
   
   //window.onscroll = function() {
     //  if window.innerHeight > window.innerWidth
