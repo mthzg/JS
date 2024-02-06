@@ -36,6 +36,7 @@
     grid-row-gap: 0px;
     box-shadow: 5px 5px 5px rgba(65, 65, 65, 0.363);
     transition-duration: 200ms;
+    text-decoration: none;
 }
 
 .resultat:hover {

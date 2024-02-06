@@ -1,35 +1,31 @@
 const parametresRecherche = new URLSearchParams(window.location.search);
 idFilm = parametresRecherche.get('id');
 
-//idFilm = document.cookie
-//console.log(idFilm);
-//idFilm = idFilm.substring(7);
-//console.log(idFilm);
 lienApi = "https://api.themoviedb.org/3/movie/"+idFilm+"?api_key=db8a9810aeb4e2c5efc4a3fd217444bc"
 
 fetch(lienApi)
 .then(response => response.json())
 .then(data => 
 {
-    console.log(data)
-    
-    titrePage = document.querySelector('title');
+  console.log(data)
+  
+  titrePage = document.querySelector('title');
     titrePage.innerHTML = "Alhuile-Ciné - "+data.title
-
+    
     titrePoster = document.querySelector('.poster h2')
     titrePoster.innerHTML = data.title
-
+    
     imagePoster = document.querySelector('.poster');
     imagePoster.style.backgroundImage = "url(https://image.tmdb.org/t/p/original/"+data.backdrop_path+")";
-
+    
     synopsis = document.querySelector('.synopsis p');
     synopsis.innerHTML = data.overview
     
     rating = document.querySelector('.rating h3')
     let voteInt = (Math.round(data.vote_average*10))/10;
     rating.innerHTML = voteInt+" / 10"
-})
-.catch(error => console.error('Error:', error));
+  })
+  .catch(error => console.error('Error:', error));
 
 const options = {
   method: 'GET',
@@ -52,12 +48,12 @@ fetch('https://api.themoviedb.org/3/movie/'+idFilm+'/reviews?language=en-US&page
     let truncateddate = date.substring(0, 10)
     let truncatedContent = content.substring(0, 900)
     let defaultimg = "logo.png"
-      if (avatar === null) {
-        avatar = defaultimg
-      }
-      else {
-        avatar = url+avatar
-      }
+    if (avatar === null) {
+      avatar = defaultimg
+    }
+    else {
+      avatar = url+avatar
+    }
     HTMLToAdd = `<div class="commentaire com">
     <h3>`+username+`<p>`+truncateddate+`</p></h3>
     <p class="texte">`+truncatedContent+`</p>
@@ -65,3 +61,10 @@ fetch('https://api.themoviedb.org/3/movie/'+idFilm+'/reviews?language=en-US&page
     </div>`
     divComm.innerHTML = divComm.innerHTML + HTMLToAdd 
   }})
+
+
+  
+  //idFilm = document.cookie
+  //console.log(idFilm);
+  //idFilm = idFilm.substring(7);
+  //console.log(idFilm);
