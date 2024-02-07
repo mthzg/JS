@@ -44,7 +44,7 @@ fetch('https://api.themoviedb.org/3/movie/'+idFilm+'/reviews?language=en-US&page
 .then(response => response.json())
 .then((data) => {
   console.log(data)
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < data.total_results; i++) {
     const url = "https://media.themoviedb.org/t/p/w300_and_h300_face/"
     const divComm = document.querySelector(".zone-commentaires")
     let username = data.results[i].author_details.name
@@ -66,15 +66,28 @@ fetch('https://api.themoviedb.org/3/movie/'+idFilm+'/reviews?language=en-US&page
         username = "Anonyme"
       }
     }
-    HTMLToAdd = `<div class="commentaire com">
-    <h3>`+username+`<p>`+truncateddate+`</p></h3>
-    <p class="texte">`+truncatedContent+`</p>
-    <img class="pp" src="`+avatar+`" alt="">
-    </div>`
+    HTMLToAdd = 
+      `<div class="commentaire com">
+        <h3>`+username+`<p>`+truncateddate+`</p></h3>
+        <p class="texte">`+truncatedContent+`</p>
+        <img class="pp" src="`+avatar+`" alt="">
+      </div>`
     divComm.innerHTML = divComm.innerHTML + HTMLToAdd 
   }})
-
-
+console.log("checkpoint")
+let commentaire = document.querySelector('.user-comm-content')
+let content = commentaire.textContent
+const divComm = document.querySelector('zone-commentaires')
+  document.querySelector(".submit").addEventListener("click", function() {
+    HTMLToAdd =
+    `<div class="commentaire com">
+      <h3>`+"lul"+`<p>`+"lul"+`</p></h3>
+      <p class="texte">`+content+`</p>
+      <img class="pp" src="``" alt="">
+    </div>`
+    console.log(divComm)
+    divComm.innerHTML = divComm.innerHTML + HTMLToAdd
+  }); 
   
   //idFilm = document.cookie
   //console.log(idFilm);

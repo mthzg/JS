@@ -3,7 +3,7 @@
     grid-column: 2/3;
     display: grid;
     grid-template-columns: 40px 12fr 40px 6fr 40px;
-    grid-template-rows: 40px 400px 40px 0fr 40px 1fr 40px;
+    grid-template-rows: 40px 400px 40px 0fr 40px 150px 40px 1fr 40px;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
     box-shadow: 1px 1px 20px rgba(75, 75, 75, 0.212);
@@ -69,8 +69,34 @@
     border-left: 1px solid yellow;
 }
 
-.zone-commentaires {
+.new-comm-content {
     grid-row: 6/7;
+    grid-column: 2/5;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) 200px;
+    grid-template-rows: 1fr 3fr 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;;
+    }
+    
+.new-comm-content label { 
+    grid-area: 1 / 1 / 2 / 2; 
+}
+.new-comm-content textarea { 
+    grid-area: 2 / 1 / 3 / 5; 
+    font-size: 20px;
+    text-align: start;
+    padding: 5px;
+    border-radius: 2%/20%;
+}
+.new-comm-content button { 
+    grid-area: 3 / 4 / 4 / 5;
+    border-radius: 10%/40%;
+    box-shadow: 2px 2px 5px rgba(56, 56, 56, 0.432);
+ }
+
+.zone-commentaires {
+    grid-row: 8/9;
     grid-column: 2/5;
     display:flex;
     justify-content: space-around;
