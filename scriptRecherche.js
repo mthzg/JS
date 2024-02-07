@@ -1,10 +1,3 @@
-document.querySelector(".logo").addEventListener("click", function(e) {
-    location.href = "http://127.0.0.1:5500/index.html"
-  });
-  document.querySelector(".name").addEventListener("click", function(e) {
-    location.href = "http://127.0.0.1:5500/index.html"
-  });
-
 function rechercheAPI(pageTrending,startEndVariable)
 {
     varRecherche = document.querySelector('.barre-recherche').value
