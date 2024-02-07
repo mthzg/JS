@@ -1,7 +1,13 @@
 const parametresRecherche = new URLSearchParams(window.location.search);
 idFilm = parametresRecherche.get('id');
-
 lienApi = "https://api.themoviedb.org/3/movie/"+idFilm+"?api_key=db8a9810aeb4e2c5efc4a3fd217444bc"
+
+document.querySelector(".logo").addEventListener("click", function(e) {
+  location.href = "http://127.0.0.1:5500/index.html"
+});
+document.querySelector(".name").addEventListener("click", function(e) {
+  location.href = "http://127.0.0.1:5500/index.html"
+});
 
 fetch(lienApi)
 .then(response => response.json())
@@ -53,6 +59,12 @@ fetch('https://api.themoviedb.org/3/movie/'+idFilm+'/reviews?language=en-US&page
     }
     else {
       avatar = url+avatar
+    }
+    if (username === ""){
+      username = data.results[i].author_details.username
+      if (username === "") {
+        username = "Anonyme"
+      }
     }
     HTMLToAdd = `<div class="commentaire com">
     <h3>`+username+`<p>`+truncateddate+`</p></h3>

@@ -75,3 +75,5 @@ fetch('https://api.themoviedb.org/3/authentication/session/new?request_token='+t
     .then(response => response.json())
     .then(response => console.log(response))
   )
+
+  
