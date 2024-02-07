@@ -75,6 +75,7 @@
     display:flex;
     justify-content: space-around;
     flex-direction: column;
+    
 }
 
 .commentaire {
@@ -83,10 +84,10 @@
     grid-template-rows: 25px 100px 0px 150px 25px;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
+    border-bottom: solid 1px black;
 }
 
 .commentaire img {
-    border: solid;
     grid-row: 2/3;
     grid-column: 2/3;
     border-radius: 100%;
@@ -95,6 +96,7 @@
 }
 
 .commentaire h3 {
+    font-family: 'Work Sans', sans-serif;
     display: flex;
     grid-row: 2/3;
     grid-column: 3/5;

@@ -1,4 +1,6 @@
-function changeCarouselMovieImage (optionsimage,lienImage,optionstitre,titre) {
+function changeCarouselMovieImage (optionsimage,lienImage,optionstitre,titre,lienId) {
+  document.querySelector(optionsimage).addEventListener("click", function(e) {
+  location.href = "http://127.0.0.1:5500/film.html?id="+lienId});
   let imageElement = document.querySelector(optionsimage);
   imageElement.setAttribute("src", "https://image.tmdb.org/t/p/original/"+lienImage);
   let titreElement = document.querySelector(optionstitre);
@@ -36,14 +38,18 @@ fetch(
   .then((response) => response.json())
   .then((data) => {
     for (let i = 0; i < 3; i++) {
+      let id = data.results[i].id;
       if (data.results[i].title === undefined){
         titre = data.results[i].name
-      }
+      } 
       else {
         titre = data.results[i].title
       }
-      changeCarouselMovieImage(".image-carousel"+(i+1),data.results[i].backdrop_path,".carousel-titre"+(i+1),titre);
+      changeCarouselMovieImage(".image-carousel"+(i+1),data.results[i].backdrop_path,".carousel-titre"+(i+1),titre,id);
     }});
+
+
+    
 function getTrending(page,startEndGetTrending) {
 fetch(
   "https://api.themoviedb.org/3/trending/all/day?language=en-US&page="+page,options
@@ -79,7 +85,7 @@ getTrending(pageTrending,startEndVariable);
 let mainDiv = document.querySelector(".grid-general");
 mainDiv.onscroll = (e) => {
   let positionDuClient = document.documentElement.scrollTop+document.documentElement.clientHeight;
-  let positionMaxPage = document.documentElement.scrollHeight;
+  let positionMaxPage = document.documentElement.scrollHeight-100;
   if (positionDuClient >= positionMaxPage) {
     startEndVariable += 20;
     pageTrending += 1;
