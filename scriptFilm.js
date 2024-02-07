@@ -119,6 +119,10 @@ bouton.addEventListener("click", addRating);
 
 
 
+
+
+
+
   /*console.log("checkpoint")
 let commentaire = document.querySelector('.user-comm-content')
 let content = commentaire.textContent

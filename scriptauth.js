@@ -21,36 +21,16 @@ fetch('https://api.themoviedb.org/3/authentication/session/new?request_token='+t
 
 function updateCookie(session_id) {
   document.cookie = "session_id="+session_id;
-}
-
-
-
-
-function updateprofile (username,pp) {
-  console.log("update profile username = ",username)
-  console.log("update profile pp path = ",pp)
-  if (pp === null) {pp = "logo.png"}}
-  
-  function getsessiondetails(session_id,accessKey) {
-    const options = {
-      method: 'GET',
-      headers: {
-        accept: 'application/json',
-        Authorization: accessKey
-      }
-    };
-    fetch('https://api.themoviedb.org/3/account/'+session_id, options)
-    .then(response => response.json())
-    .then((data) => {
-      console.log("test session details",data)
-      updateprofile(data.username,data.avatar.tmdb.avatar_path)})}
-      
+  div = document.querySelector(".grid-page-auth")
+  div.innerHTML = div.innerHTML + `<a href=index.html>Revenir à la page principale</a>`
+  titre = document.querySelector('.titre-auth');
+  titre.innerHTML = "Connexion Réussie";
+}      
       
 accessKey = getCookie('accessKey',0);
 const parametresRecherche = new URLSearchParams(window.location.search);
 tokenDeSession = parametresRecherche.get('request_token');
 getSessionId(accessKey)
-getsessiondetails(session_id,accessKey)
       
 
 

@@ -1,5 +1,5 @@
 .grid-page-auth {
-    background-color:yellow;
+    background-color:white;
     grid-row:2/3;
     grid-column: 2/3;
     display: grid;
@@ -7,6 +7,7 @@
     grid-template-rows: 50px 80px 40px 100px 40px 100px 40px 100px 50px;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
+    box-shadow: 1px 1px 20px rgba(43, 43, 43, 0.342);
 
 }
 
@@ -14,59 +15,27 @@
     grid-row: 2/3;
     grid-column: 3/4;
     text-align: center;
-
+    font-size: 60px;
+    font-family: 'Work Sans', sans-serif;
 }
 
-input[type="text"] {
+.grid-page-auth a {
     grid-row:4/5;
     grid-column: 3/4;
-
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    font-family: 'Merriweather', serif;
+    text-decoration: none;
+    border-radius: 5%/40%;
+    background-color: black;
+    color:white;
+    box-shadow: 1px 1px 20px rgba(43, 43, 43, 0.342);
+    transition-duration: 300ms;
 }
 
-label[for="username"] {
-    grid-row:3/4;
-    grid-column: 3/4;
-    text-align: center;
-}
-
-label[for="password"] {
-    margin-top: 10px;
-    grid-row:5/6;
-    grid-column: 3/4;
-    text-align: center;
-}
-
-input[type="password"] {
-    grid-row:6/7;
-    grid-column: 3/4
-}
-
-button {
-    grid-area: 8/3/9/4;
-
-}
-
-.poster {
-    grid-row:2/3;
-    grid-column:2/5;
-    background-color: brown;
-}
-
-.synopsis {
-    grid-row: 4/5;
-    grid-column: 2/3;
-    background-color: brown;
-}
-
-.rating {
-    grid-row: 4/5;
-    grid-column: 4/5;
-    background-color: brown;
-}
-
-.commentaires {
-    grid-row: 6/7;
-    grid-column: 2/5;
-    background-color: brown;
+.grid-page-auth a:hover {
+    color: black;
+    background-color: white;
 }
