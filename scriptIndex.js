@@ -85,7 +85,7 @@ getTrending(pageTrending,startEndVariable);
 let mainDiv = document.querySelector(".grid-general");
 mainDiv.onscroll = (e) => {
   let positionDuClient = document.documentElement.scrollTop+document.documentElement.clientHeight;
-  let positionMaxPage = document.documentElement.scrollHeight-1;
+  let positionMaxPage = document.documentElement.scrollHeight-100;
   if (positionDuClient >= positionMaxPage) {
     startEndVariable += 20;
     pageTrending += 1;

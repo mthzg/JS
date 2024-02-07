@@ -10,6 +10,7 @@
 }
 
 .barre-recherche{
+    border-radius: 1.5%/30%;
     border: 1px solid;
     grid-row:2/3;
     grid-column: 2/5;
