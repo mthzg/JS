@@ -137,4 +137,4 @@ const divComm = document.querySelector('zone-commentaires')
   //idFilm = document.cookie
   //console.log(idFilm);
   //idFilm = idFilm.substring(7);
-  //console.log(idFilm);
+  //console.log(idFilm);*/
