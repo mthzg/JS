@@ -68,15 +68,38 @@ fetch('https://api.themoviedb.org/3/authentication/session/new?request_token='+t
   .then(data => updateCookie(data.session_id))}
 
 function updateCookie(session_id) {
-  document.cookie = "accessKey=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;",
   document.cookie = "session_id="+session_id;
 }
 
+function updateprofile (username,pp) {
+    console.log("update profile username = ",username)
+    console.log("update profile pp path = ",pp)
+    if (pp === null) {pp = "logo.png"}}
+
+function getsessiondetails(session_id,accessKey) {
+  const options = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: accessKey
+    }
+  };
+  fetch('https://api.themoviedb.org/3/account/'+session_id, options)
+  .then(response => response.json())
+  .then((data) => {
+    console.log("test session details",data)
+    updateprofile(data.username,data.avatar.tmdb.avatar_path)})}
+
+  
 accessKey = document.cookie
 accessKey = accessKey.substring(10);
 const parametresRecherche = new URLSearchParams(window.location.search);
 tokenDeSession = parametresRecherche.get('request_token');
 getSessionId(accessKey)
+console.log(accessKey)
+getsessiondetails("99bd16dc6431b1ab65e991576faeabe354556291","bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhOWI1MzgyMmUwNzlhMjA3OWEyNTU3YmY4YzE2YjFhOCIsInN1YiI6IjY1YjRmN2U3NThlZmQzMDE2M2NhM2E1ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.8jpbHJlS1LVUQ7D2ulav92LOTi88tzJGZZ7RlcwrA9c")
+
+
 
 
 

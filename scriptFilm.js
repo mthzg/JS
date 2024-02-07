@@ -68,20 +68,21 @@ fetch('https://api.themoviedb.org/3/movie/'+idFilm+'/reviews?language=en-US&page
       </div>`
     divComm.innerHTML = divComm.innerHTML + HTMLToAdd 
   }})
-console.log("checkpoint")
-let commentaire = document.querySelector('.user-comm-content')
-let content = commentaire.textContent
-const divComm = document.querySelector('zone-commentaires')
-  document.querySelector(".submit").addEventListener("click", function() {
-    HTMLToAdd =
-    `<div class="commentaire com">
-      <h3>`+"lul"+`<p>`+"lul"+`</p></h3>
-      <p class="texte">`+content+`</p>
-      <img class="pp" src="``" alt="">
-    </div>`
-    console.log(divComm)
-    divComm.innerHTML = divComm.innerHTML + HTMLToAdd
-  }); 
+
+//console.log("checkpoint")
+//let commentaire = document.querySelector('.user-comm-content')
+//let content = commentaire.textContent
+//const divComm = document.querySelector('zone-commentaires')
+//  document.querySelector(".submit").addEventListener("click", function() {
+//    HTMLToAdd =
+//    `<div class="commentaire com">
+//      <h3>`+"lul"+`<p>`+"lul"+`</p></h3>
+//      <p class="texte">`+content+`</p>
+//      <img class="pp" src="``" alt="">
+//    </div>`
+//    console.log(divComm)
+//    divComm.innerHTML = divComm.innerHTML + HTMLToAdd
+//  }); 
   
   //idFilm = document.cookie
   //console.log(idFilm);
