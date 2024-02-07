@@ -54,8 +54,41 @@
   })
 }*/
 
+function getSessionId(accessKey){
+  const options = {
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    'content-type': 'application/json',
+    Authorization: accessKey
+  }
+};
+fetch('https://api.themoviedb.org/3/authentication/session/new?request_token='+tokenDeSession, options)
+  .then(response => response.json())
+  .then(data => updateCookie(data.session_id))}
+
+function updateCookie(session_id) {
+  document.cookie = "accessKey=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;",
+  document.cookie = "session_id="+session_id;
+}
+
+accessKey = document.cookie
+accessKey = accessKey.substring(10);
+const parametresRecherche = new URLSearchParams(window.location.search);
+tokenDeSession = parametresRecherche.get('request_token');
+getSessionId(accessKey)
 
 
+
+
+
+
+
+
+
+  
+//! working ->
+/*
 const parametresRecherche = new URLSearchParams(window.location.search);
 tokenDeSession = parametresRecherche.get('request_token');
 console.log(tokenDeSession)
@@ -75,3 +108,4 @@ fetch('https://api.themoviedb.org/3/authentication/session/new?request_token='+t
     .then(response => response.json())
     .then(response => console.log(response))
   )
+  */

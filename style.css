@@ -69,6 +69,7 @@ header a {
 header a:hover {
   background-color: black;
   color: white;
+  cursor:pointer;
 }
 
 h1,h2 {
@@ -80,12 +81,7 @@ a[href="recherche.html"] {
   grid-column: 6/7;
 }
 
-a[href="auth.html"] {
-  grid-row: 4/5;
-  grid-column: 6/7;
-}
-
-button {
+.connexion {
   grid-row: 4/5;
   grid-column: 6/7;
 }

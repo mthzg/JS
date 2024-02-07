@@ -1,9 +1,9 @@
-function recupToken() {
+function recupToken(accessToken) {
     const options = {
       method: 'GET',
       headers: {
         accept: 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkYjhhOTgxMGFlYjRlMmM1ZWZjNGEzZmQyMTc0NDRiYyIsInN1YiI6IjY1Yjc1YmJlZDU1YzNkMDE3Y2ZhYzBiZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.0XfH-ZZ0XcDH-KXR7ZINt7KhzuICXcbvlnaNrzc0aEM'
+        Authorization: accessToken
       }
     };
     
@@ -13,6 +13,9 @@ function recupToken() {
       })
   }
   
-login = document.querySelector('button').addEventListener('click', function (e) {
-  recupToken();
+login = document.querySelector('.connexion').addEventListener('click', function (e) {
+  accessTokenInput = prompt("Veuillez entrer une clé d'accès :")
+  accessTokenInput = 'Bearer '+ accessTokenInput
+  document.cookie = "accessKey="+accessTokenInput+";";
+  recupToken(accessTokenInput);
 });
