@@ -30,9 +30,12 @@ header {
 }
 
 img[src="logo.png"] {
+  max-height: 100%;
+}
+
+.logo {
   grid-row: 2/5;
   grid-column: 2/3;
-  max-height: 100%;
 }
 
 img[alt="profile-picture"] {
@@ -51,7 +54,7 @@ header h1 {
   margin: 0px;
 }
 
-header a {
+header a.recherche, header a.connexion {
   text-decoration: none;
   color: black;
   background-color: white;
@@ -66,7 +69,7 @@ header a {
   font-family: 'Merriweather', serif;
 }
 
-header a:hover {
+header .recherche:hover, header .connexion:hover {
   background-color: black;
   color: white;
   cursor:pointer;
@@ -76,7 +79,7 @@ h1,h2 {
   font-family: 'Work Sans', sans-serif;
 }
 
-a[href="recherche.html"] {
+.recherche {
   grid-row:2/3;
   grid-column: 6/7;
 }
