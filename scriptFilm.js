@@ -55,7 +55,7 @@ fetch('https://api.themoviedb.org/3/movie/'+idFilm+'/reviews?language=en-US&page
     let date = data.results[i].created_at
     let truncateddate = date.substring(0, 10)
     let truncatedContent = content.substring(0, 900)
-    let defaultimg = "logo.png"
+    let defaultimg = "default-avatar.png"
     if (avatar === null) {
       avatar = defaultimg
     }
