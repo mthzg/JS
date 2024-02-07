@@ -32,6 +32,9 @@ function affichageFilms(film)
 }
 
 function actualisationResultats() {
+    setTimeout((e) => {}, 500)
+    let startEndVariable = 0;
+    let pageTrending = 1;
     viderPage()
     rechercheAPI(pageTrending,startEndVariable)
     let mainDiv = document.querySelector(".grid-general");
@@ -46,8 +49,6 @@ function actualisationResultats() {
       }    
 }
     
-let startEndVariable = 0;
-let pageTrending = 1;
 barreRecherche = document.querySelector('.barre-recherche');
 barreRecherche.addEventListener('input', actualisationResultats);
 
