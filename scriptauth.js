@@ -1,3 +1,45 @@
+function getCookie(cookieName,index) {
+  cookieName = cookieName + "=";
+  let cookiesArray = document.cookie.split(';');
+  cookieNameLength = cookieName.length
+  finalCookie = cookiesArray[index].substring(cookieNameLength)
+  return finalCookie
+}
+
+function getSessionId(accessKey){
+  const options = {
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    'content-type': 'application/json',
+    Authorization: accessKey
+  }
+};
+fetch('https://api.themoviedb.org/3/authentication/session/new?request_token='+tokenDeSession, options)
+.then(response => response.json())
+.then(data => updateCookie(data.session_id))}
+
+function updateCookie(session_id) {
+  document.cookie = "session_id="+session_id;
+}
+
+accessKey = getCookie('accessKey',0);
+
+const parametresRecherche = new URLSearchParams(window.location.search);
+tokenDeSession = parametresRecherche.get('request_token');
+getSessionId(accessKey)
+
+
+
+
+
+
+
+
+
+
+
+//$ old
 /*function recupToken(){
   const options = {
     method: 'GET',
@@ -53,59 +95,3 @@
     }, 5000);
   })
 }*/
-
-function getSessionId(accessKey){
-  const options = {
-  method: 'GET',
-  headers: {
-    accept: 'application/json',
-    'content-type': 'application/json',
-    Authorization: accessKey
-  }
-};
-fetch('https://api.themoviedb.org/3/authentication/session/new?request_token='+tokenDeSession, options)
-  .then(response => response.json())
-  .then(data => updateCookie(data.session_id))}
-
-function updateCookie(session_id) {
-  document.cookie = "accessKey=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;",
-  document.cookie = "session_id="+session_id;
-}
-
-accessKey = document.cookie
-accessKey = accessKey.substring(10);
-const parametresRecherche = new URLSearchParams(window.location.search);
-tokenDeSession = parametresRecherche.get('request_token');
-getSessionId(accessKey)
-
-
-
-
-
-
-
-
-
-  
-//! working ->
-/*
-const parametresRecherche = new URLSearchParams(window.location.search);
-tokenDeSession = parametresRecherche.get('request_token');
-console.log(tokenDeSession)
-
-const options = {
-  method: 'GET',
-  headers: {
-    accept: 'application/json',
-    'content-type': 'application/json',
-    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkYjhhOTgxMGFlYjRlMmM1ZWZjNGEzZmQyMTc0NDRiYyIsInN1YiI6IjY1Yjc1YmJlZDU1YzNkMDE3Y2ZhYzBiZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.0XfH-ZZ0XcDH-KXR7ZINt7KhzuICXcbvlnaNrzc0aEM'
-  }
-};
-fetch('https://api.themoviedb.org/3/authentication/session/new?request_token='+tokenDeSession, options)
-  .then(response => response.json())
-  .then(response => 
-    fetch('https://api.themoviedb.org/3/account/'+response.session_id, options)
-    .then(response => response.json())
-    .then(response => console.log(response))
-  )
-  */

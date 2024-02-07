@@ -2,14 +2,24 @@ const parametresRecherche = new URLSearchParams(window.location.search);
 idFilm = parametresRecherche.get('id');
 lienApi = "https://api.themoviedb.org/3/movie/"+idFilm+"?api_key=db8a9810aeb4e2c5efc4a3fd217444bc"
 
+function getCookie(cookieName,index) {
+  cookieName = cookieName + "=";
+  let cookiesArray = document.cookie.split('; ');
+  let cookieNameLength = cookieName.length
+  console.log(cookiesArray[index].substring(cookieNameLength))
+  finalCookie = cookiesArray[index].substring(cookieNameLength)
+  return finalCookie
+}
+
 let cookie = document.cookie
 if (cookie === '') {
-  console.log("pas de session")
+  console.log("Pas de session")
 }
 else {
-  session_id = cookie.substring(11)
+  accessKey = getCookie('accessKey',0)
+  session_id = getCookie('session_id',1)
 }
-accessKey = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkYjhhOTgxMGFlYjRlMmM1ZWZjNGEzZmQyMTc0NDRiYyIsInN1YiI6IjY1Yjc1YmJlZDU1YzNkMDE3Y2ZhYzBiZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.0XfH-ZZ0XcDH-KXR7ZINt7KhzuICXcbvlnaNrzc0aEM'
+
 
 fetch(lienApi)
 .then(response => response.json())
@@ -39,7 +49,7 @@ const options = {
   method: 'GET',
   headers: {
     accept: 'application/json',
-    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhOWI1MzgyMmUwNzlhMjA3OWEyNTU3YmY4YzE2YjFhOCIsInN1YiI6IjY1YjRmN2U3NThlZmQzMDE2M2NhM2E1ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.8jpbHJlS1LVUQ7D2ulav92LOTi88tzJGZZ7RlcwrA9c'
+    Authorization: accessKey
   }
 };
 fetch('https://api.themoviedb.org/3/movie/'+idFilm+'/reviews?language=en-US&page=1', options)
@@ -104,6 +114,7 @@ function addRating() {
 
 bouton = document.querySelector(".submit");
 bouton.addEventListener("click", addRating);
+
 
 
 
