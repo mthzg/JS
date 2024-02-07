@@ -132,7 +132,7 @@ const divComm = document.querySelector('zone-commentaires')
     </div>`
     console.log(divComm)
     divComm.innerHTML = divComm.innerHTML + HTMLToAdd
-  }); */
+  }); 
   
   //idFilm = document.cookie
   //console.log(idFilm);
