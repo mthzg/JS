@@ -2,6 +2,14 @@ const parametresRecherche = new URLSearchParams(window.location.search);
 idFilm = parametresRecherche.get('id');
 lienApi = "https://api.themoviedb.org/3/movie/"+idFilm+"?api_key=db8a9810aeb4e2c5efc4a3fd217444bc"
 
+let cookie = document.cookie
+if (cookie === '') {
+  console.log("pas de session")
+}
+else {
+  session_id = cookie.substring(11)
+}
+accessKey = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkYjhhOTgxMGFlYjRlMmM1ZWZjNGEzZmQyMTc0NDRiYyIsInN1YiI6IjY1Yjc1YmJlZDU1YzNkMDE3Y2ZhYzBiZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.0XfH-ZZ0XcDH-KXR7ZINt7KhzuICXcbvlnaNrzc0aEM'
 
 fetch(lienApi)
 .then(response => response.json())
@@ -68,7 +76,39 @@ fetch('https://api.themoviedb.org/3/movie/'+idFilm+'/reviews?language=en-US&page
       </div>`
     divComm.innerHTML = divComm.innerHTML + HTMLToAdd 
   }})
-console.log("checkpoint")
+
+function addRating() {
+  ratingSelected = document.querySelector('select option:checked');
+  rating = ratingSelected.value
+  const options = {
+    method: 'POST',
+    headers: {
+      accept: 'application/json',
+      'Content-Type': 'application/json;charset=utf-8',
+      Authorization: accessKey
+    },
+    body: '{"value":'+rating+'}'
+  };
+  fetch('https://api.themoviedb.org/3/movie/790462/rating?session_id='+session_id, options)
+  .then(response => response.json())
+  .then(response => {
+    if(response.success === true) {
+      alert("La note a bien été publiée");
+    }
+    else {
+      alert("La note n'a pas pu être publiée");
+    }
+})
+  .catch(err => alert("La note n'a pas pu être publiée"));
+}
+
+bouton = document.querySelector(".submit");
+bouton.addEventListener("click", addRating);
+
+
+
+
+  /*console.log("checkpoint")
 let commentaire = document.querySelector('.user-comm-content')
 let content = commentaire.textContent
 const divComm = document.querySelector('zone-commentaires')
@@ -81,7 +121,7 @@ const divComm = document.querySelector('zone-commentaires')
     </div>`
     console.log(divComm)
     divComm.innerHTML = divComm.innerHTML + HTMLToAdd
-  }); 
+  }); */
   
   //idFilm = document.cookie
   //console.log(idFilm);
