@@ -84,3 +84,8 @@ a[href="auth.html"] {
   grid-row: 4/5;
   grid-column: 6/7;
 }
+
+button {
+  grid-row: 4/5;
+  grid-column: 6/7;
+}
