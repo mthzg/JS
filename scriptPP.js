@@ -22,6 +22,9 @@ function changementProfilePicture(){
         avatar = 'https://image.tmdb.org/t/p/original/'+data.avatar.tmdb.avatar_path
         headerProfilePicture = document.querySelector('.profile-picture')
         headerProfilePicture.setAttribute("src",avatar)
+        lienConnexion = document.querySelector('.connexion')
+        lienConnexion.setAttribute("href","index.html")
+        lienConnexion.innerHTML = "Déconnexion"
       })
       .catch(err => console.error(err));
   }

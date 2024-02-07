@@ -11,8 +11,8 @@ function getCookie(cookieName,index) {
   return finalCookie
 }
 
-let cookie = document.cookie
-if (cookie === '') {
+let cookieFilm = document.cookie
+if (cookieFilm === '') {
   console.log("Pas de session")
 }
 else {
